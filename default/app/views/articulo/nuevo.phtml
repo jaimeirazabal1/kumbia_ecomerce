@@ -1,0 +1,92 @@
+<br>
+
+<?php View::content() ?>
+<?php echo Form::open("","POST",'class="form-horizontal"') ?>
+  <div class="form-group">
+    <label for="nombre" class="col-sm-2 control-label">Nombre:</label>
+    <div class="col-sm-10">
+    	<?php echo Form::text("articulo.nombre",'class="form-control" placeholder="Nombre"') ?>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="precio" class="col-sm-2 control-label">Precio:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="articulo[precio]" id="precio" placeholder="Precio">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="categoria" class="col-sm-2 control-label">Categoria:</label>
+    <div class="col-sm-10" >
+    	<div id="categorias">
+      	<?php echo Form::dbselect("articulo.categoria_id",null,null,"Seleccione una Categoria","class='form-control'") ?>
+      	</div>
+      <a href="#" data-toggle="modal" data-target="#myModal">Nueva Categoria</a>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="descripcion" class="col-sm-2 control-label">Descripción:</label>
+    <div class="col-sm-10">
+      <?php echo Form::textarea("articulo.descripcion","class='form-control'") ?>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Crear</button>
+    </div>
+  </div>
+</form>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Nueva Categoria</h4>
+      </div>
+      <div class="modal-body">
+      	<div id="mensaje_retorno"></div>
+      	<?php echo Form::open("","POST","id='form-nueva-categoria'") ?>
+      	<div class="form-group">
+      		<label>Nombre Categoria:</label>
+      		<input type="text" name="categoria[nombre]" class="form-control">
+      	</div>
+      	<div class="form-group">
+      		<label>Descripción Categoria:</label>
+      		<textarea name="categoria[descripcion]" class="form-control"></textarea>
+      	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Crear">
+      </div>
+      	<?php echo Form::close() ?>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("body").on("submit","#form-nueva-categoria",function(){
+			$("body").off("submit","#form-nueva-categoria",function(){})
+			var data = $(this).serialize();
+			$.ajax({
+				url:"../categoria/nueva",
+				data:data,
+				type:"POST",
+				success:function(r){
+					if (r.correcto == true) {
+						$("#mensaje_retorno").html("<div class='alert alert-success'>Categoria Agregada</div>");
+						//$("#form-nueva-categoria").reset();
+						$("#categorias").html(r.htmldeategorias);
+					}else{
+						$("#mensaje_retorno").html("<div class='alert alert-danger'>Error, no se Agrego la Categoria</div>");
+					}
+				}
+			})
+			return false;
+		})
+	})
+</script>

@@ -1,0 +1,57 @@
+<?php View::content() ?>
+<br>
+
+<div class="row">
+	<?php foreach ($imagenes as $key => $value): ?>
+	<?php echo Form::open() ?>
+	<?php echo Form::hidden("imagen.id",null,$value->id) ?>
+	<?php echo Form::hidden("imagen.articulo_id",null,$value->id) ?>
+	<div class="col-sm-4 col-lg-4 col-md-4">
+		<div class="thumbnail">
+			<?php echo Html::img($value->url_320x150) ?>
+			<div class="caption">
+				<h4 class="pull-right"><?php echo $value->precio ?></h4>
+				<h4><a href="#"><?php echo $value->nombre ?></a>
+				</h4>
+
+				<p><?php echo Form::textarea("imagen.descripcion","placeholder='Descripcion de Imagen..' class='form-control'",$value->descripcion) ?></p>
+				<div >
+					<label>Mostrar Esta
+					<?php if ($value->imagen_inicial): ?>
+						<input type="checkbox" id="<?php echo $value->id ?>" checked class="imagen_inicial" name="imagen[imagen_inicial]">
+						<?php else: ?>
+						<input type="checkbox" id="<?php echo $value->id ?>" class="imagen_inicial" name="imagen[imagen_inicial]">
+					<?php endif ?>
+					</label>
+				</div>
+
+		<input type="submit" value="Hecho!" class='btn btn-default btn-xs'>
+	</div>
+	<div class="ratings">
+		<p class="pull-right">15 reviews</p>
+		<p>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+		</p>
+	</div>
+</div>
+</div>
+<?php echo Form::close() ?>
+<?php endforeach ?>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$(".imagen_inicial").click(function(){
+			var id = $(this).attr("id");
+			$(".imagen_inicial").each(function(){
+				if ($(this).attr("id") != id ) {
+					$(this).attr("checked",false);
+				};
+			})
+		})
+	})
+</script>

@@ -1,0 +1,72 @@
+<?php View::content() ?>
+<br>
+<div class="row">
+	<div class="thumbnail">
+	<div class="caption">
+		<table>
+		<tr><td><b>Nombre:</b></td><td>&nbsp;&nbsp;<?php echo $articulo[0]->nombre ?></td></tr>
+		<tr><td><b>Precio:</b></td><td>&nbsp;&nbsp;<?php echo $articulo[0]->precio ?></td></tr>
+		</table>
+	</div>
+</div>
+    <?php foreach ($articulo as $key => $value): ?>
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <?php echo Html::img($value->url_320x150,$value->url,"class='click_img' nombre=\"{$value->nombre}\" descripcion=\"{$value->descripcion}\" data-toggle=\"modal\" data-target=\"#myModal\"") ?>
+            <div class="caption">
+                <p style="overflow:hidden;height:50px"><?php echo $value->descripcion ? Util::myTruncate($value->descripcion,20) : "Sin Descripcion" ?></p>
+            </div>
+            <div class="ratings">
+                <p class="pull-right">15 reviews</p>
+                <p>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       <h4 id="nombre_modal"></h4>
+      </div>
+      <div class="modal-body">
+      	<div class="thumbnail">
+      		<img id="imagen_modal" source="<?php echo PUBLIC_PATH."img/" ?>" src="" alt="">
+      		<div class="caption">
+                <p id="descripcion_modal"></p>
+            </div>
+      	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+      	<?php echo Form::close() ?>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("body").on("click",'.click_img',function(){
+			$("body").off("click",'.click_img',function(){})
+			var descripcion = $(this).attr("descripcion");
+			var alt = $(this).attr("alt");
+			$("#nombre_modal").text($(this).attr("nombre"));
+			$("#descripcion_modal").text(descripcion);
+			$("#imagen_modal").attr("src",$("#imagen_modal").attr("source")+alt)
+		})
+	})
+</script>
+<style type="text/css">
+	.click_img:hover{
+		cursor:pointer;
+	}
+</style>
