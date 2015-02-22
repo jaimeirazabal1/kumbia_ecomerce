@@ -5,7 +5,11 @@
 	<div class="caption">
 		<table>
 		<tr><td><b>Nombre:</b></td><td>&nbsp;&nbsp;<?php echo $articulo[0]->nombre ?></td></tr>
-		<tr><td><b>Precio:</b></td><td>&nbsp;&nbsp;<?php echo $articulo[0]->precio ?></td></tr>
+    <tr><td><b>Precio:</b></td><td>&nbsp;&nbsp;<?php echo $articulo[0]->precio ?></td></tr>
+		<tr><td><b>Descripción:</b></td><td>&nbsp;&nbsp;<p style="padding:0px 2px 0px 4px"><?php echo $articulo[0]->descripcion_articulo ?></p></td></tr>
+    <?php if (Auth::is_valid() and Auth::get("role") == 'admin'): ?>
+      <tr><td><?php echo Html::link("imagen/configurarImagenes/{$articulo[0]->id}","Configurar") ?></td></tr>
+    <?php endif ?>
 		</table>
 	</div>
 </div>

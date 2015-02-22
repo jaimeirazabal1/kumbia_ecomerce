@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-02-2015 a las 15:15:52
--- Versión del servidor: 5.6.17
--- Versión de PHP: 5.5.12
+-- Tiempo de generaciÃ³n: 22-02-2015 a las 21:22:07
+-- VersiÃ³n del servidor: 5.6.17
+-- VersiÃ³n de PHP: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `articulo` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Volcado de datos para la tabla `articulo`
@@ -62,7 +62,11 @@ CREATE TABLE IF NOT EXISTS `articulo` (
 
 INSERT INTO `articulo` (`id`, `nombre`, `precio`, `categoria_id`, `descripcion`, `fecha`) VALUES
 (3, 'Patineta 1', '30 $', 1, 'Patineta 1', '2015-02-17 20:37:20'),
-(4, 'Patineta 2', '30 $', 1, 'Patineta 2', '2015-02-17 21:30:23');
+(4, 'Patineta 2', '30 $', 1, 'Patineta 2', '2015-02-17 21:30:23'),
+(5, 'Lenovo G50 15.6-Inch Laptop (59421808) Black', '$629.90', 5, 'Intel Core i7-4510U 2.0 GHz Processor\r\n8 GB DDR3 RAM\r\n1 TB 5400 rpm Hard Drive\r\n15.6-Inch HD (1366 x 768) Display\r\nWindows 8.1, 5-hour battery life', '2015-02-22 14:51:07'),
+(6, 'Lenovo Z50 Laptop Computer - 59436279', '$674.99', 5, '4th Generation Intel Core i7-4510U Processor (3.10GHz Turbo, 2.00GHz Base 1600MHz 4MB)\r\nIntel Dual Band Wireless-AC 3160\r\n15.6" Full HD LED Glossy Wedge Display (1920x1080)\r\n1TB Hard Drive / Windows 8.1 / DVD Drive\r\n8.0GB PC3-12800 DDR3L SDRAM 1600 MHz / Bluetooth Version 4.0', '2015-02-22 14:53:50'),
+(7, 'Toshiba Satellite S55-B5280, 15.6" Laptop, 12GB Me', '$669.88', 5, 'â€¢IntelÂ® CoreTM i7-4510U Processor\r\nâ€¢12GB DDR3L memory: DDR3L 1600MHz\r\nâ€¢1TB Hard Drive Bluetooth\r\nâ€¢1 USB 2.0, 1 USB 3.0, and 1 USB 3.0 with Sleep and Charge\r\nâ€¢Built-in high-definition webcam with microphone', '2015-02-22 14:56:37'),
+(9, 'Toshiba Satellite S55T-B5273NR ', '$729.90', 5, '15.6" WLED Backlit Touchscreen Display (1366 x768).\r\n4th Gen Intel Quad-Core i7-4710HQ Processor, 2.5 GHz boost up to 3.5 GHz.\r\n8GB Memory / 1TB Hard Drive / Intel HD Graphics 4600.\r\nDual-Band Wireless AC 3160 / HDMI with 4K Ultra HD Output / Bluetooth 4.0 / DTS Sound.\r\nWindows 8.1 (64-bit) (Optical Drive not included)', '2015-02-22 15:00:41');
 
 -- --------------------------------------------------------
 
@@ -77,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `categoria`
@@ -87,7 +91,8 @@ INSERT INTO `categoria` (`id`, `nombre`, `descripcion`, `fecha`) VALUES
 (1, 'Patinetas', 'Patinetas varias', '2015-02-17 20:27:23'),
 (2, 'Ruedas de Patinetas', 'Ruedas de Patinetas varias', '2015-02-17 20:28:40'),
 (3, 'Sweters', 'Sweters varios', '2015-02-17 20:29:30'),
-(4, 'Lijas de Patineta', 'Lijas de Patineta', '2015-02-17 20:30:32');
+(4, 'Lijas de Patineta', 'Lijas de Patineta', '2015-02-17 20:30:32'),
+(5, 'Laptop', 'Laptop', '2015-02-22 14:50:39');
 
 -- --------------------------------------------------------
 
@@ -110,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `contacto` (
 
 INSERT INTO `contacto` (`id`, `descripcion`, `direccion`, `fecha`) VALUES
 (1, 'El email del administrador', 'jaimeirazabal1@gmail.com', '2015-02-22 13:28:55'),
-(3, 'Número telefónico del administrador', '04143299925', '2015-02-22 13:31:47');
+(3, 'NÃºmero telefÃ³nico del administrador', '04143299925', '2015-02-22 13:31:47');
 
 -- --------------------------------------------------------
 
@@ -129,19 +134,28 @@ CREATE TABLE IF NOT EXISTS `imagen` (
   `url_800x300` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `url` (`url`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 --
 -- Volcado de datos para la tabla `imagen`
 --
 
 INSERT INTO `imagen` (`id`, `articulo_id`, `descripcion`, `url`, `imagen_inicial`, `fecha`, `url_320x150`, `url_800x300`) VALUES
-(23, 4, 'esta patineta es linda', 'uploads/2015-02-17_17-14-11_tabla1.jpg', 0, '2015-02-17 22:14:11', 'uploads/_320x150_2015-02-17_17-14-11_tabla1.jpg', 'uploads/_800x300_2015-02-17_17-14-11_tabla1.jpg'),
-(24, 4, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate assumenda voluptas delectus ea dolores ex, a officia dolorum rerum unde. Tempore fugiat quis vero doloremque assumenda id cupiditate. Soluta, esse?', 'uploads/2015-02-17_17-14-11_tabla2.jpg', 0, '2015-02-17 22:14:11', 'uploads/_320x150_2015-02-17_17-14-11_tabla2.jpg', 'uploads/_800x300_2015-02-17_17-14-11_tabla2.jpg'),
-(25, 4, NULL, 'uploads/2015-02-17_17-14-11_tabla3.jpg', 1, '2015-02-17 22:14:11', 'uploads/_320x150_2015-02-17_17-14-11_tabla3.jpg', 'uploads/_800x300_2015-02-17_17-14-11_tabla3.jpg'),
+(23, 4, 'esta patineta es linda', 'uploads/2015-02-17_17-14-11_tabla1.jpg', 1, '2015-02-17 22:14:11', 'uploads/_320x150_2015-02-17_17-14-11_tabla1.jpg', 'uploads/_800x300_2015-02-17_17-14-11_tabla1.jpg'),
 (26, 4, NULL, 'uploads/2015-02-17_17-14-11_tabla4.jpg', 0, '2015-02-17 22:14:11', 'uploads/_320x150_2015-02-17_17-14-11_tabla4.jpg', 'uploads/_800x300_2015-02-17_17-14-11_tabla4.jpg'),
 (27, 4, NULL, 'uploads/2015-02-17_17-14-11_tabla5.jpg', 0, '2015-02-17 22:14:11', 'uploads/_320x150_2015-02-17_17-14-11_tabla5.jpg', 'uploads/_800x300_2015-02-17_17-14-11_tabla5.jpg'),
-(28, 4, NULL, 'uploads/2015-02-17_17-14-11_tabla6.jpg', 0, '2015-02-17 22:14:11', 'uploads/_320x150_2015-02-17_17-14-11_tabla6.jpg', 'uploads/_800x300_2015-02-17_17-14-11_tabla6.jpg');
+(28, 4, NULL, 'uploads/2015-02-17_17-14-11_tabla6.jpg', 0, '2015-02-17 22:14:11', 'uploads/_320x150_2015-02-17_17-14-11_tabla6.jpg', 'uploads/_800x300_2015-02-17_17-14-11_tabla6.jpg'),
+(29, 5, 'laptop de frente', 'uploads/2015-02-22_09-52-18_81s9HPzwy+L._SL1500_.jpg', 0, '2015-02-22 14:52:19', 'uploads/_320x150_2015-02-22_09-52-18_81s9HPzwy+L._SL1500_.jpg', 'uploads/_800x300_2015-02-22_09-52-18_81s9HPzwy+L._SL1500_.jpg'),
+(30, 5, 'laptop de frente y arriba', 'uploads/2015-02-22_09-52-19_91HbfbQk1ML._SL1500_.jpg', 1, '2015-02-22 14:52:19', 'uploads/_320x150_2015-02-22_09-52-19_91HbfbQk1ML._SL1500_.jpg', 'uploads/_800x300_2015-02-22_09-52-19_91HbfbQk1ML._SL1500_.jpg'),
+(31, 5, 'laptop desde arriba', 'uploads/2015-02-22_09-52-19_91miymlNHXL._SL1500_.jpg', NULL, '2015-02-22 14:52:19', 'uploads/_320x150_2015-02-22_09-52-19_91miymlNHXL._SL1500_.jpg', 'uploads/_800x300_2015-02-22_09-52-19_91miymlNHXL._SL1500_.jpg'),
+(32, 5, 'desde atras', 'uploads/2015-02-22_09-52-19_91SNkuc4GlL._SL1500_.jpg', NULL, '2015-02-22 14:52:20', 'uploads/_320x150_2015-02-22_09-52-19_91SNkuc4GlL._SL1500_.jpg', 'uploads/_800x300_2015-02-22_09-52-19_91SNkuc4GlL._SL1500_.jpg'),
+(33, 5, 'de los lados', 'uploads/2015-02-22_09-52-20_615XhAn7TIL._SL1060_.jpg', NULL, '2015-02-22 14:52:20', 'uploads/_320x150_2015-02-22_09-52-20_615XhAn7TIL._SL1060_.jpg', 'uploads/_800x300_2015-02-22_09-52-20_615XhAn7TIL._SL1060_.jpg'),
+(34, 5, 'la lado derecho', 'uploads/2015-02-22_09-52-20_812F8OkE3LL._SL1500_.jpg', NULL, '2015-02-22 14:52:20', 'uploads/_320x150_2015-02-22_09-52-20_812F8OkE3LL._SL1500_.jpg', 'uploads/_800x300_2015-02-22_09-52-20_812F8OkE3LL._SL1500_.jpg'),
+(35, 6, NULL, 'uploads/2015-02-22_09-54-43_61cBvzPDG6L._SL1060_.jpg', 0, '2015-02-22 14:54:43', 'uploads/_320x150_2015-02-22_09-54-43_61cBvzPDG6L._SL1060_.jpg', 'uploads/_800x300_2015-02-22_09-54-43_61cBvzPDG6L._SL1060_.jpg'),
+(36, 6, NULL, 'uploads/2015-02-22_09-54-43_61W9ElOjZ0L._SL1060_.jpg', 0, '2015-02-22 14:54:43', 'uploads/_320x150_2015-02-22_09-54-43_61W9ElOjZ0L._SL1060_.jpg', 'uploads/_800x300_2015-02-22_09-54-43_61W9ElOjZ0L._SL1060_.jpg'),
+(37, 6, NULL, 'uploads/2015-02-22_09-54-43_71Sia0pSz+L._SL1500_.jpg', 1, '2015-02-22 14:54:43', 'uploads/_320x150_2015-02-22_09-54-43_71Sia0pSz+L._SL1500_.jpg', 'uploads/_800x300_2015-02-22_09-54-43_71Sia0pSz+L._SL1500_.jpg'),
+(38, 6, NULL, 'uploads/2015-02-22_09-54-43_81s9HPzwy+L._SL1500_.jpg', 0, '2015-02-22 14:54:44', 'uploads/_320x150_2015-02-22_09-54-43_81s9HPzwy+L._SL1500_.jpg', 'uploads/_800x300_2015-02-22_09-54-43_81s9HPzwy+L._SL1500_.jpg'),
+(39, 9, NULL, 'uploads/2015-02-22_10-00-56_41XvImn6dlL.jpg', 1, '2015-02-22 15:00:56', 'uploads/_320x150_2015-02-22_10-00-56_41XvImn6dlL.jpg', 'uploads/_800x300_2015-02-22_10-00-56_41XvImn6dlL.jpg');
 
 -- --------------------------------------------------------
 
@@ -160,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `servicio` (
 --
 
 INSERT INTO `servicio` (`id`, `html`) VALUES
-(1, '<h1>Comercio electr&oacute;nico</h1>\r\n\r\n<p>El&nbsp;<strong>comercio electr&oacute;nico</strong>, tambi&eacute;n conocido como&nbsp;<em><strong>e-commerce</strong></em>&nbsp;(<em>electronic commerce</em>&nbsp;en&nbsp;<a href="http://es.wikipedia.org/wiki/Idioma_ingl%C3%A9s">ingl&eacute;s</a>), consiste en la compra y venta de&nbsp;<a href="http://es.wikipedia.org/wiki/Producto_(marketing)">productos</a>&nbsp;o de&nbsp;<a href="http://es.wikipedia.org/wiki/Servicio_(econom%C3%ADa)">servicios</a>&nbsp;a trav&eacute;s de medios electr&oacute;nicos, tales como&nbsp;<a href="http://es.wikipedia.org/wiki/Internet">Internet</a>&nbsp;y otras&nbsp;<a href="http://es.wikipedia.org/wiki/Redes_inform%C3%A1ticas">redes inform&aacute;ticas</a>. Originalmente el t&eacute;rmino se aplicaba a la realizaci&oacute;n de transacciones mediante medios electr&oacute;nicos tales como el&nbsp;<a href="http://es.wikipedia.org/wiki/Intercambio_electr%C3%B3nico_de_datos">Intercambio electr&oacute;nico de datos</a>, sin embargo con el advenimiento de la&nbsp;<a href="http://es.wikipedia.org/wiki/Internet">Internet</a>&nbsp;y la&nbsp;<a href="http://es.wikipedia.org/wiki/World_Wide_Web">World Wide Web</a>&nbsp;a mediados de los a&ntilde;os 90 comenz&oacute; a referirse principalmente a la venta de bienes y servicios a trav&eacute;s de Internet, usando como forma de pago medios electr&oacute;nicos, tales como las&nbsp;<a href="http://es.wikipedia.org/wiki/Tarjeta_de_cr%C3%A9dito">tarjetas de cr&eacute;dito</a>.</p>\r\n\r\n<p>La cantidad de comercio llevada a cabo electr&oacute;nicamente ha crecido de manera extraordinaria debido a Internet. Una gran variedad de comercio se realiza de esta manera, estimulando la creaci&oacute;n y utilizaci&oacute;n de innovaciones como la<a href="http://es.wikipedia.org/w/index.php?title=Transferencia_de_fondos_electr%C3%B3nica&amp;action=edit&amp;redlink=1">transferencia de fondos electr&oacute;nica</a>, la&nbsp;<a href="http://es.wikipedia.org/wiki/Administraci%C3%B3n_de_la_cadena_de_suministro">administraci&oacute;n de cadenas de suministro</a>, el&nbsp;<a href="http://es.wikipedia.org/wiki/Marketing_en_Internet">marketing en Internet</a>, el&nbsp;<a href="http://es.wikipedia.org/wiki/OLTP">procesamiento de transacciones en l&iacute;nea</a>&nbsp;(OLTP), el&nbsp;<a href="http://es.wikipedia.org/wiki/Intercambio_electr%C3%B3nico_de_datos">intercambio electr&oacute;nico de datos</a>&nbsp;(EDI), los sistemas de administraci&oacute;n del&nbsp;<a href="http://es.wikipedia.org/wiki/Inventario">inventario</a>&nbsp;y los sistem<span style="line-height:1.6">as automatizados de recolecci&oacute;n de datos.</span></p>\r\n\r\n<p><a href="http://commons.wikimedia.org/wiki/File:%D0%9F%D0%BE-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D1%83.jpg" style="line-height: 23.1111106872559px;"><img alt="??-???????.jpg" src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/%D0%9F%D0%BE-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D1%83.jpg/250px-%D0%9F%D0%BE-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D1%83.jpg" style="height:172px; width:250px" /></a></p>\r\n\r\n<p>La mayor parte del comercio electr&oacute;nico consiste en la compra y venta de productos o servicios entre personas y empresas, sin embargo un porcentaje considerable del comercio electr&oacute;nico consiste en la adquisic<span style="line-height:1.6">i&oacute;n de art&iacute;culos virtuales (software y derivados en su mayor&iacute;a), tales como el acceso a contenido &quot;premium&quot; de un sitio web.</span></p>\r\n');
+(1, '<h1>Comercio electr&oacute;nico</h1>\r\n\r\n<p>El&nbsp;<strong>comercio electr&oacute;nico</strong>, tambi&eacute;n conocido como&nbsp;<em><strong>e-commerce</strong></em>&nbsp;(<em>electronic commerce</em>&nbsp;en&nbsp;<a href="http://es.wikipedia.org/wiki/Idioma_ingl%C3%A9s">ingl&eacute;s</a>), consiste en la compra y venta de&nbsp;<a href="http://es.wikipedia.org/wiki/Producto_(marketing)">productos</a>&nbsp;o de&nbsp;<a href="http://es.wikipedia.org/wiki/Servicio_(econom%C3%ADa)">servicios</a>&nbsp;a trav&eacute;s de medios electr&oacute;nicos, tales como&nbsp;<a href="http://es.wikipedia.org/wiki/Internet">Internet</a>&nbsp;y otras&nbsp;<a href="http://es.wikipedia.org/wiki/Redes_inform%C3%A1ticas">redes inform&aacute;ticas</a>. Originalmente el t&eacute;rmino se aplicaba a la realizaci&oacute;n de transacciones mediante medios electr&oacute;nicos tales como el&nbsp;<a href="http://es.wikipedia.org/wiki/Intercambio_electr%C3%B3nico_de_datos">Intercambio electr&oacute;nico de datos</a>, sin embargo con el advenimiento de la&nbsp;<a href="http://es.wikipedia.org/wiki/Internet">Internet</a>&nbsp;y la&nbsp;<a href="http://es.wikipedia.org/wiki/World_Wide_Web">World Wide Web</a>&nbsp;a mediados de los a&ntilde;os 90 comenz&oacute; a referirse principalmente a la venta de bienes y servicios a trav&eacute;s de Internet, usando como forma de pago medios electr&oacute;nicos, tales como las&nbsp;<a href="http://es.wikipedia.org/wiki/Tarjeta_de_cr%C3%A9dito">tarjetas de cr&eacute;dito</a>.</p>\r\n\r\n<p>La cantidad de comercio llevada a cabo electr&oacute;nicamente ha crecido de manera extraordinaria debido a Internet. Una gran variedad de comercio se realiza de esta manera, estimulando la creaci&oacute;n y utilizaci&oacute;n de innovaciones como la<a href="http://es.wikipedia.org/w/index.php?title=Transferencia_de_fondos_electr%C3%B3nica&amp;action=edit&amp;redlink=1">transferencia de fondos electr&oacute;nica</a>, la&nbsp;<a href="http://es.wikipedia.org/wiki/Administraci%C3%B3n_de_la_cadena_de_suministro">administraci&oacute;n de cadenas de suministro</a>, el&nbsp;<a href="http://es.wikipedia.org/wiki/Marketing_en_Internet">marketing en Internet</a>, el&nbsp;<a href="http://es.wikipedia.org/wiki/OLTP">procesamiento de transacciones en l&iacute;nea</a>&nbsp;(OLTP), el&nbsp;<a href="http://es.wikipedia.org/wiki/Intercambio_electr%C3%B3nico_de_datos">intercambio electr&oacute;nico de datos</a>&nbsp;(EDI), los sistemas de administraci&oacute;n del&nbsp;<a href="http://es.wikipedia.org/wiki/Inventario">inventario</a>&nbsp;y los sistemas automatizados de recolecci&oacute;n de datos.</p>\r\n\r\n<p><a href="http://commons.wikimedia.org/wiki/File:%D0%9F%D0%BE-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D1%83.jpg"><img alt="??-???????.jpg" src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/%D0%9F%D0%BE-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D1%83.jpg/250px-%D0%9F%D0%BE-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D1%83.jpg" style="height:172px; width:250px" /></a></p>\r\n\r\n<p>La mayor parte del comercio electr&oacute;nico consiste en la compra y venta de productos o servicios entre personas y empresas, sin embargo un porcentaje considerable del comercio electr&oacute;nico consiste en la adquisici&oacute;n de art&iacute;culos virtuales (software y derivados en su mayor&iacute;a), tales como el acceso a contenido &quot;premium&quot; de un sitio web.</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -174,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `sesion` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `hora_salida` time DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
 
 --
 -- Volcado de datos para la tabla `sesion`
@@ -199,7 +213,11 @@ INSERT INTO `sesion` (`id`, `user_id`, `fecha`, `hora_salida`) VALUES
 (18, 1, '2015-02-22 13:04:39', '08:35:06'),
 (19, 1, '2015-02-22 13:07:35', '08:59:16'),
 (20, 1, '2015-02-22 13:31:15', '09:13:30'),
-(21, 1, '2015-02-22 13:45:17', NULL);
+(21, 1, '2015-02-22 13:45:17', '09:49:04'),
+(22, 1, '2015-02-22 14:20:14', '10:53:52'),
+(23, 1, '2015-02-22 15:24:15', '14:57:26'),
+(24, 1, '2015-02-22 19:27:35', '15:20:23'),
+(25, 2, '2015-02-22 19:50:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -214,14 +232,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `role` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `pass`, `role`) VALUES
-(1, 'jaimeirazabal1@gmail.com', '7d3ff5e583a1727c07bd911d427b514b', 'admin');
+(1, 'jaimeirazabal1@gmail.com', '7d3ff5e583a1727c07bd911d427b514b', 'admin'),
+(2, 'jaime@jaime.com', 'c4ca4238a0b923820dcc509a6f75849b', NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

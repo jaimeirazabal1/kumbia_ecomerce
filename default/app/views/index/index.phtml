@@ -4,14 +4,14 @@
     <?php foreach ($articulos as $key => $value): ?>
 
     <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
+        <div class="thumbnail" style="height:300px">
             <?php echo Html::img($value->url_320x150) ?>
             <div class="caption">
                 <h4 class="pull-right"><?php echo $value->precio ?></h4>
                 <h4>
                     <?php echo Html::link("articulo/ver/".$value->nombre,ucfirst($value->nombre)) ?>
                 </h4>
-                <p><?php echo $value->descripcion ?></p>
+                <p><?php echo Util::myTruncate($value->descripcion,20) ?></p>
             </div>
             <div class="ratings">
                 <p class="pull-right">15 reviews</p>

@@ -1,4 +1,5 @@
 <?php View::content() ?>
+<?php echo Tag::js("jquery/jquery.kumbiaphp") ?>
 <br>
 
 <div class="row">
@@ -26,6 +27,7 @@
 				</div>
 
 		<input type="submit" value="Hecho!" class='btn btn-default btn-xs'>
+		<?php echo Js::link("imagen/eliminar/{$value->id}/{$value->articulo_id}","Eliminar Imagen") ?>
 	</div>
 	<div class="ratings">
 		<p class="pull-right">15 reviews</p>
@@ -42,6 +44,10 @@
 <?php echo Form::close() ?>
 <?php endforeach ?>
 </div>
+<?php if (Auth::is_valid() and Auth::get("role") == "admin"): ?>
+	<hr>
+	<?php echo Html::link("imagen/nuevas/{$imagenes[0]->nombre}","Subir Imagenes") ?>
+<?php endif ?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		

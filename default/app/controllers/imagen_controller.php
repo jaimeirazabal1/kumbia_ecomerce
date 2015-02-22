@@ -34,6 +34,13 @@ class ImagenController extends AppController{
 		}
 		$this->imagenes = $imagen->getImagenesByArticuloId($id_articulo);
 	}
+	public function eliminar($id,$id_articulo){
+		$imagen = new Imagen();
+		if ($imagen->eliminarImagen($id)) {
+			Flash::valid("Imagen Eliminada");
+		}
+		Router::toAction("configurarImagenes/{$id_articulo}");
+	}
 }
 
  ?>

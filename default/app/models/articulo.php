@@ -32,7 +32,7 @@ class Articulo extends ActiveRecord{
 		return $this->find_all_by_sql($query);
 	}
 	public function getArticuloByNombre($nombre){
-		return $this->find(	"columns: articulo.id,articulo.precio,articulo.nombre,articulo.descripcion,imagen.url_320x150,imagen.url,imagen.descripcion",
+		return $this->find(	"columns: articulo.id,articulo.precio,articulo.nombre,articulo.descripcion as descripcion_articulo,imagen.url_320x150,imagen.url,imagen.descripcion",
 							"conditions: articulo.nombre='$nombre'",
 							"join: left join imagen on articulo.id = imagen.articulo_id");
 	}
