@@ -31,13 +31,13 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li>
-            <a href="#">About</a>
+            <?php echo Html::link("acerca/","About") ?>
           </li>
           <li>
-            <a href="#">Services</a>
+            <?php echo Html::link("servicio/","Services") ?>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <?php echo Html::link("contacto/","Contact") ?>
           </li>
           <?php if (Auth::is_valid() and Auth::get("role") == "admin"): ?>
           <li>
@@ -65,17 +65,28 @@
     <div class="row">
       <br>
       <div class="col-md-3">
-        <br>
+        <br><br>
         <p class="lead">Jaime Irazabal Shop</p>
         <div class="list-group">
           <?php foreach ($categorias_template as $key => $value): ?>
             <?php echo html::link("index/?buscarpor=$value->nombre",$value->nombre,'class="list-group-item"') ?>
           <?php endforeach ?>
+        <?php if (Auth::is_valid() and Auth::get("role") ==  "admin"): ?>
+        <br>
+          
+            <p class="lead">Configuración</p>
+            <div class="list-group">
+              <?php echo html::link("contacto/","Contacto",'class="list-group-item"') ?>
+            </div>
+
+        <?php endif ?>
         </div>
       </div>
-
+        
+      
       <div class="col-md-9">
 
+      <?php if (Router::get("controller") != "contacto" and Router::get("controller") != "servicio" and Router::get("controller") != "acerca"): ?>
         <div class="row carousel-holder">
         <br>
         <br>
@@ -112,6 +123,11 @@
           </div>
 
         </div>
+        <?php else: ?>
+        <br>
+        <br>
+        <br>
+        <?php endif ?>
 
         <?php View::content(); ?>
 

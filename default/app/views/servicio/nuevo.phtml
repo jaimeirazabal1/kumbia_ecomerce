@@ -1,0 +1,10 @@
+<?php View::content() ?>
+<?php echo Tag::js('ckeditor/ckeditor') ?>
+<?php echo Form::open() ?>
+<?php echo Form::hidden("servicio.id") ?>
+<?php echo Form::textarea("servicio.html","class='ckeditor'") ?>
+<br>
+<?php echo Form::submit("Agregar","class='btn btn-success'") ?>
+<?php echo Form::close() ?>
+<hr>
+<?php echo Html::link("servicio/","Ver Servicio") ?>

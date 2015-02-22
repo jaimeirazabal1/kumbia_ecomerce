@@ -13,6 +13,8 @@ class IndexController extends AppController
     	$articulo = new Articulo();
     	if (Input::get("buscarpor")) {
     		$this->articulos = $articulo->getByNombreCategoria(Input::get("buscarpor"));
+    	}else{
+    		$this->articulos = $articulo->getArticulos();
     	}
 
     }

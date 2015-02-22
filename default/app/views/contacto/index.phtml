@@ -1,0 +1,25 @@
+<br>
+<?php View::content() ?>
+<h3>Contactos</h3>
+<?php if (!$contacto): ?>
+	<center>
+		<p>No Hay contactos agregados</p>
+	</center>
+<?php else: ?>
+	<table class="table">
+		<thead>
+			<th>Descripción</th>
+			<th>Dirección</th>
+		</thead>
+		<?php foreach ($contacto as $key => $value): ?>
+			<tr>
+				<td><?php echo $value->descripcion ?></td>
+				<td><?php echo $value->direccion ?></td>
+			</tr>
+		<?php endforeach ?>
+	</table>
+<?php endif ?>
+<?php if (Auth::is_valid() and Auth::get("role") == "admin"): ?>
+	<hr>
+	<?php echo Html::link("contacto/nuevo","Nuevo Contacto") ?>
+<?php endif ?>

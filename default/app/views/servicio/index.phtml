@@ -1,0 +1,16 @@
+<?php View::content() ?>
+<?php if ($servicio): ?>
+	<?php echo $servicio->html ?>
+	<hr>
+	<?php if (Auth::is_valid() and Auth::get("role") == 'admin'): ?>
+		<?php echo Html::link("servicio/editar/{$servicio->id}","Editar Servicio") ?>
+	<?php endif ?>
+<?php else: ?>
+	<center>
+		<p>No se ha Agregado un servicio</p>
+		<hr>
+		<?php if (Auth::is_valid() and Auth::get("role") == 'admin'): ?>
+			<?php echo Html::link("servicio/nuevo","Agregar Servicio") ?>
+		<?php endif ?>
+	</center>
+<?php endif ?>

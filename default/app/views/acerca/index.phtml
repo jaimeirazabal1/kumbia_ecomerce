@@ -1,0 +1,16 @@
+<?php View::content() ?>
+<?php if ($acerca): ?>
+	<?php echo $acerca->html ?>
+	<hr>
+	<?php if (Auth::is_valid() and Auth::get("role") == 'admin'): ?>
+		<?php echo Html::link("acerca/editar/{$acerca->id}","Editar About") ?>
+	<?php endif ?>
+<?php else: ?>
+	<center>
+		<p>No se ha Agregado un 'Acerca de'</p>
+		<hr>
+		<?php if (Auth::is_valid() and Auth::get("role") == 'admin'): ?>
+			<?php echo Html::link("acerca/nuevo","Agregar About") ?>
+		<?php endif ?>
+	</center>
+<?php endif ?>

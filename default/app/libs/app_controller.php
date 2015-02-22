@@ -32,7 +32,10 @@ class AppController extends Controller
 						"publico" => array(
 										   array("sesion"=>array("login")),
 										   array("articulo"=>array("ver")),
-								    	   array("index"=>array(""))
+								    	   array("index"=>array("index")),
+								    	   array("contacto"=>array("index")),
+								    	   array("servicio"=>array("index")),
+								    	   array("acerca"=>array("index"))
 										  ),
 						"comun" => array(
 										 array("user"=>array("miperfil")),
